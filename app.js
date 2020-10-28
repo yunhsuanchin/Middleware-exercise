@@ -3,14 +3,20 @@ const app = express()
 const PORT = 3000
 
 app.use((req, res, next) => {
+  const start = Date.now()
   const today = new Date()
-  const currentDate = today.toLocaleDateString()
-  const currentTime = today.toTimeString().slice(0, 8)
-  console.log(`${currentDate} ${currentTime} | ${req.method} FROM ${req.originalUrl}`)
-  next()
+  const requestDate = today.toLocaleDateString()
+  const requestTime = today.toTimeString().slice(0, 8)
+
+  res.on('finish', () => {
+    const end = Date.now()
+    const duration = end - start
+    console.log(`${requestDate} ${requestTime} | ${req.method} FROM ${req.originalUrl} | total time: ${duration}ms`)
+  })
+  return next()
 })
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.send('列出全部 Todo')
 })
 
