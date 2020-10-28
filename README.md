@@ -1,6 +1,6 @@
 # Express Middleware Exercise
 
-一個可自動紀錄伺服器接收到瀏覽器任何 request 的內容資訊以及回應時間，並顯示在 server log 的小工具。
+一個可自動紀錄伺服器接收到瀏覽器的任何 request 內容資訊，並記錄 response 的花費時間，最終顯示在 server log 的小工具。
 
 ### 環境建置需求
 
